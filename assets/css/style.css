@@ -362,14 +362,74 @@ h1,h2,h3,h4 { font-family: var(--font-serif); line-height: 1.25; letter-spacing:
    PARCERIA
 ════════════════════════════════════════ */
 #parceria { background: var(--bg-base); }
-.parceria-hd { text-align: center; margin-bottom: 56px; }
-.parceria-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 18px; }
-.parceria-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 18px; text-align: center; transition: var(--trans); }
+.parceria-hd { text-align: center; margin-bottom: 52px; }
+
+/* Banner */
+.parceria-banner {
+  position: relative; overflow: hidden;
+  background: var(--bg-surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 48px 52px;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 40px; align-items: center; margin-bottom: 52px;
+}
+.parceria-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 0% 50%, rgba(200,147,42,.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.parceria-banner-deco {
+  position: absolute; top: -60px; right: 280px; width: 300px; height: 300px;
+  border-radius: 50%; border: 1px solid rgba(200,147,42,.07); pointer-events: none;
+}
+.parceria-banner-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(200,147,42,.12); border: 1px solid var(--border);
+  border-radius: 50px; padding: 5px 16px; font-size: .68rem;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 20px;
+}
+.parceria-banner-tag i { animation: pulse-dot 2s ease infinite; font-size: .5rem; }
+.parceria-banner-title {
+  font-family: var(--font-serif); font-size: clamp(1.6rem,3vw,2.2rem);
+  font-weight: 700; color: var(--cream); line-height: 1.25; margin-bottom: 18px;
+}
+.parceria-banner-text {
+  font-size: .95rem; color: var(--text-secondary); line-height: 1.8;
+  max-width: 520px; margin-bottom: 28px;
+}
+.parceria-banner-ep { text-align: center; flex-shrink: 0; }
+.parceria-banner-ep img {
+  width: 170px; height: 170px; object-fit: cover;
+  border-radius: var(--radius-lg); border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0,0,0,.5);
+}
+.parceria-banner-ep-label {
+  font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--gold); margin-top: 10px; font-weight: 700;
+}
+
+/* Cards */
+.parceria-grid { display: grid; gap: 18px; }
+.parceria-grid-4 { grid-template-columns: repeat(4,1fr); }
+.parceria-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 22px; text-align: center; transition: var(--trans); }
 .parceria-card:hover { border-color: var(--gold); transform: translateY(-6px); box-shadow: 0 14px 42px rgba(0,0,0,.4), 0 0 24px var(--gold-glow-sm); }
-.parceria-icon { width: 54px; height: 54px; border-radius: 50%; background: rgba(200,147,42,.1); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.35rem; color: var(--gold); transition: var(--trans); }
+.parceria-icon { width: 58px; height: 58px; border-radius: 50%; background: rgba(200,147,42,.1); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 1.4rem; color: var(--gold); transition: var(--trans); }
 .parceria-card:hover .parceria-icon { background: var(--gold); color: var(--bg-deep); box-shadow: 0 0 22px var(--gold-glow); }
-.parceria-title { font-family: var(--font-serif); font-size: .98rem; color: var(--cream); margin-bottom: 9px; }
-.parceria-text { font-size: .8rem; color: var(--text-muted); line-height: 1.6; }
+.parceria-title { font-family: var(--font-serif); font-size: 1.05rem; color: var(--cream); margin-bottom: 12px; }
+.parceria-text { font-size: .84rem; color: var(--text-secondary); line-height: 1.75; }
+
+/* CTA bottom */
+.parceria-cta { text-align: center; margin-top: 52px; }
+.parceria-cta-text { font-family: var(--font-serif); font-size: 1.1rem; font-style: italic; color: var(--text-secondary); margin-bottom: 22px; }
+
+/* Responsive */
+@media (max-width: 1024px) { .parceria-grid-4 { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 768px) {
+  .parceria-banner { grid-template-columns: 1fr; padding: 36px 28px; }
+  .parceria-banner-ep { display: none; }
+  .parceria-grid-4 { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 480px) { .parceria-grid-4 { grid-template-columns: 1fr; } }
 
 /* ════════════════════════════════════════
    CONTATO
