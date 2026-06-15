@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Ministério Raízes — Apresentação do Projeto</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg:      #1A1108;
+  --bg2:     #23160A;
+  --bg3:     #2E1C0C;
+  --gold:    #C8932A;
+  --goldi:   #E8B840;
+  --cream:   #F5EDD8;
+  --muted:   #AE9272;
+  --dim:     #7A6548;
+  --serif:   'Playfair Display', Georgia, serif;
+  --sans:    'Inter', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--cream);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── Each slide = one A4 landscape page ── */
+.slide {
+  width: 297mm;
+  height: 210mm;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg);
+}
+.slide:last-child { page-break-after: avoid; }
+
+/* ── Decorative gold line top ── */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* ── Shared ── */
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 7pt; font-weight: 700; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+}
+.badge::before { content: ''; width: 22px; height: 1.5px; background: var(--gold); }
+.gold { color: var(--goldi); }
+.divider { width: 40px; height: 2px; background: linear-gradient(to right, var(--gold), var(--goldi)); border-radius: 2px; margin: 10px 0 14px; }
+
+.footer-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  border-top: 1px solid rgba(200,147,42,.18);
+  padding: 8px 22mm;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 7pt; color: var(--dim); letter-spacing: .08em;
+}
+
+/* ══════════════════════
+   SLIDE 1 — CAPA
+══════════════════════ */
+.s-cover {
+  background: var(--bg);
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+.s-cover .bg-deco {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(200,147,42,.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 50%, rgba(200,147,42,.05) 0%, transparent 55%);
+}
+.s-cover .cover-line {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.s-cover .cover-min {
+  font-size: 8pt; font-weight: 700; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 14px; position: relative;
+}
+.s-cover h1 {
+  font-family: var(--serif); font-size: 68pt; font-weight: 900;
+  color: var(--cream); line-height: .9; letter-spacing: -.02em;
+  margin-bottom: 18px; position: relative;
+}
+.s-cover .cover-tag {
+  font-family: var(--serif); font-size: 12pt; font-style: italic;
+  color: var(--muted); margin-bottom: 28px; position: relative;
+}
+.s-cover .cover-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(200,147,42,.4); border-radius: 50px;
+  padding: 7px 20px; font-size: 8pt; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--goldi); position: relative;
+}
+.s-cover .cover-footer {
+  position: absolute; bottom: 16px; left: 0; right: 0;
+  text-align: center; font-size: 7pt; color: var(--dim); letter-spacing: .1em;
+}
+
+/* ══════════════════════
+   SLIDE 2 — QUEM SOMOS
+══════════════════════ */
+.s-sobre .inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0; height: 100%;
+}
+.s-sobre .col-text {
+  padding: 20mm 14mm 20mm 22mm;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid rgba(200,147,42,.15);
+}
+.s-sobre .col-text h2 {
+  font-family: var(--serif); font-size: 28pt; font-weight: 700;
+  color: var(--cream); line-height: 1.15; margin-bottom: 14px;
+}
+.s-sobre .col-text p {
+  font-size: 9.5pt; color: var(--muted); line-height: 1.75; margin-bottom: 20px;
+}
+.s-sobre blockquote {
+  font-family: var(--serif); font-size: 11pt; font-style: italic;
+  color: var(--goldi); border-left: 3px solid var(--gold);
+  padding-left: 14px; line-height: 1.5; margin-bottom: 22px;
+}
+.s-sobre .stats {
+  display: flex; gap: 16px;
+}
+.s-sobre .stat {
+  background: var(--bg2); border: 1px solid rgba(200,147,42,.2);
+  border-radius: 10px; padding: 12px 18px; text-align: center; flex: 1;
+}
+.s-sobre .stat-n {
+  font-family: var(--serif); font-size: 18pt; font-weight: 700; color: var(--goldi);
+}
+.s-sobre .stat-l {
+  font-size: 6.5pt; color: var(--dim); text-transform: uppercase; letter-spacing: .1em; margin-top: 3px;
+}
+.s-sobre .col-img {
+  position: relative; overflow: hidden;
+  background: var(--bg2);
+}
+.s-sobre .col-img img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: .85;
+}
+.s-sobre .col-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(26,17,8,.4), transparent);
+}
+
+/* ══════════════════════
+   SLIDE 3 — LIDERANÇA
+══════════════════════ */
+.s-lideres {
+  background: var(--bg2);
+  align-items: stretch;
+}
+.s-lideres .inner {
+  display: grid; grid-template-columns: auto 1fr 1fr; height: 100%;
+}
+.s-lideres .col-hd {
+  width: 56mm; padding: 22mm 10mm 22mm 22mm;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid rgba(200,147,42,.15);
+}
+.s-lideres .col-hd h2 {
+  font-family: var(--serif); font-size: 24pt; font-weight: 700;
+  color: var(--cream); line-height: 1.2; margin-bottom: 10px;
+}
+.s-lideres .col-hd p {
+  font-size: 8.5pt; color: var(--muted); line-height: 1.65;
+}
+.s-lideres .leader-card {
+  padding: 22mm 14mm;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid rgba(200,147,42,.1);
+}
+.s-lideres .leader-card:last-child { border-right: none; }
+.s-lideres .leader-img {
+  width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
+  object-position: top; border: 2px solid rgba(200,147,42,.4); margin-bottom: 14px;
+}
+.s-lideres .leader-name {
+  font-family: var(--serif); font-size: 14pt; color: var(--goldi); margin-bottom: 4px;
+}
+.s-lideres .leader-role {
+  font-size: 7pt; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 10px; opacity: .8;
+}
+.s-lideres .leader-bio {
+  font-size: 8.5pt; color: var(--muted); line-height: 1.7;
+}
+.s-lideres .leader-ig {
+  font-size: 8pt; color: var(--dim); margin-top: 10px;
+}
+
+/* ══════════════════════
+   SLIDE 4 — EQUIPE
+══════════════════════ */
+.s-equipe {
+  padding: 18mm 22mm;
+}
+.s-equipe h2 {
+  font-family: var(--serif); font-size: 26pt; font-weight: 700;
+  color: var(--cream); margin-bottom: 6px;
+}
+.s-equipe .sub {
+  font-size: 9pt; color: var(--muted); margin-bottom: 22px;
+}
+.s-equipe .team-row {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
+}
+.s-equipe .member {
+  background: var(--bg2); border: 1px solid rgba(200,147,42,.18);
+  border-radius: 12px; overflow: hidden; text-align: center;
+}
+.s-equipe .member img {
+  width: 100%; aspect-ratio: 1; object-fit: cover; object-position: top;
+}
+.s-equipe .member-name {
+  font-family: var(--serif); font-size: 9pt; color: var(--cream);
+  padding: 8px 6px 2px;
+}
+.s-equipe .member-role {
+  font-size: 6.5pt; color: var(--gold); letter-spacing: .1em;
+  text-transform: uppercase; padding-bottom: 8px;
+}
+
+/* ══════════════════════
+   SLIDE 5 — DISCOGRAFIA
+══════════════════════ */
+.s-disco {
+  padding: 16mm 22mm;
+}
+.s-disco h2 {
+  font-family: var(--serif); font-size: 26pt; font-weight: 700;
+  color: var(--cream); margin-bottom: 20px;
+}
+.s-disco .eps {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.s-disco .ep-card {
+  background: var(--bg2); border: 1px solid rgba(200,147,42,.2);
+  border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
+}
+.s-disco .ep-img {
+  width: 100%; aspect-ratio: 16/9; object-fit: cover;
+}
+.s-disco .ep-body { padding: 14px 16px; flex: 1; }
+.s-disco .ep-year {
+  font-size: 6.5pt; font-weight: 700; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
+}
+.s-disco .ep-name {
+  font-family: var(--serif); font-size: 11pt; color: var(--cream);
+  margin-bottom: 10px; line-height: 1.2;
+}
+.s-disco .ep-tracks {
+  list-style: none; display: flex; flex-direction: column; gap: 4px;
+}
+.s-disco .ep-tracks li {
+  font-size: 7.5pt; color: var(--muted);
+  padding-left: 10px; position: relative;
+}
+.s-disco .ep-tracks li::before {
+  content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 6pt;
+}
+
+/* ══════════════════════
+   SLIDE 6 — EP TRIBUTO
+══════════════════════ */
+.s-tributo {
+  background: var(--bg2);
+}
+.s-tributo .inner {
+  display: grid; grid-template-columns: 1fr 1fr; height: 100%;
+}
+.s-tributo .col-img {
+  position: relative; overflow: hidden;
+}
+.s-tributo .col-img img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.s-tributo .col-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent, var(--bg2));
+}
+.s-tributo .col-info {
+  padding: 18mm 22mm 18mm 14mm;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.s-tributo .em-breve {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(200,147,42,.12); border: 1px solid rgba(200,147,42,.3);
+  border-radius: 50px; padding: 4px 14px; font-size: 7pt;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 16px; width: fit-content;
+}
+.s-tributo h2 {
+  font-family: var(--serif); font-size: 32pt; font-weight: 900;
+  color: var(--cream); margin-bottom: 14px; line-height: 1.1;
+}
+.s-tributo .desc {
+  font-size: 9pt; color: var(--muted); line-height: 1.75; margin-bottom: 18px;
+}
+.s-tributo .tracks {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px;
+}
+.s-tributo .track {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 8.5pt; color: var(--cream);
+}
+.s-tributo .track-n {
+  font-family: var(--serif); font-size: 8pt; color: var(--gold); width: 18px; flex-shrink: 0;
+}
+
+/* ══════════════════════
+   SLIDE 7 — PARCERIA
+══════════════════════ */
+.s-parceria {
+  padding: 14mm 22mm;
+}
+.s-parceria .hd { margin-bottom: 18px; }
+.s-parceria h2 {
+  font-family: var(--serif); font-size: 26pt; font-weight: 700;
+  color: var(--cream); margin-bottom: 6px;
+}
+.s-parceria .sub {
+  font-size: 9pt; color: var(--muted); max-width: 440px; line-height: 1.65;
+}
+.s-parceria .cards {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+}
+.s-parceria .card {
+  background: var(--bg2); border: 1px solid rgba(200,147,42,.2);
+  border-radius: 14px; padding: 20px 16px; text-align: center;
+}
+.s-parceria .c-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(200,147,42,.1); border: 1px solid rgba(200,147,42,.25);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 12px; font-size: 16px; color: var(--gold);
+}
+.s-parceria .c-title {
+  font-family: var(--serif); font-size: 11pt; color: var(--cream); margin-bottom: 8px;
+}
+.s-parceria .c-text {
+  font-size: 7.5pt; color: var(--muted); line-height: 1.65;
+}
+
+/* ══════════════════════
+   SLIDE 8 — IGREJA
+══════════════════════ */
+.s-igreja {
+  background: var(--bg2);
+  padding: 16mm 22mm;
+}
+.s-igreja h2 {
+  font-family: var(--serif); font-size: 26pt; font-weight: 700;
+  color: var(--cream); margin-bottom: 20px;
+}
+.s-igreja .inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;
+}
+.s-igreja .pastores {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.s-igreja .pastor-row {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--bg3); border: 1px solid rgba(200,147,42,.18);
+  border-radius: 12px; padding: 12px 16px;
+}
+.s-igreja .pastor-avatar {
+  width: 48px; height: 48px; border-radius: 50%; object-fit: cover;
+  border: 1.5px solid rgba(200,147,42,.35); flex-shrink: 0;
+}
+.s-igreja .pastor-name {
+  font-family: var(--serif); font-size: 10pt; color: var(--cream); margin-bottom: 2px;
+}
+.s-igreja .pastor-role {
+  font-size: 6.5pt; color: var(--gold); letter-spacing: .12em; text-transform: uppercase;
+}
+.s-igreja .pastor-ig { font-size: 7.5pt; color: var(--dim); margin-top: 2px; }
+.s-igreja .church-box {
+  background: var(--bg3); border: 1px solid rgba(200,147,42,.2);
+  border-radius: 14px; padding: 24px;
+}
+.s-igreja .church-name {
+  font-family: var(--serif); font-size: 13pt; color: var(--cream); margin-bottom: 8px;
+}
+.s-igreja .church-info {
+  font-size: 8.5pt; color: var(--muted); line-height: 1.75; margin-bottom: 14px;
+}
+.s-igreja .church-ig {
+  font-size: 8pt; color: var(--gold);
+}
+
+/* ══════════════════════
+   SLIDE 9 — CONTATO
+══════════════════════ */
+.s-contato {
+  align-items: center; text-align: center;
+}
+.s-contato .bg-deco {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(200,147,42,.07) 0%, transparent 65%);
+}
+.s-contato h2 {
+  font-family: var(--serif); font-size: 38pt; font-weight: 700;
+  color: var(--cream); line-height: 1.15; margin-bottom: 8px; position: relative;
+}
+.s-contato .sub {
+  font-family: var(--serif); font-size: 11pt; font-style: italic;
+  color: var(--muted); margin-bottom: 36px; position: relative;
+}
+.s-contato .contacts {
+  display: flex; gap: 20px; justify-content: center; position: relative;
+}
+.s-contato .contact-item {
+  background: var(--bg2); border: 1px solid rgba(200,147,42,.25);
+  border-radius: 14px; padding: 18px 28px; text-align: center; min-width: 160px;
+}
+.s-contato .c-icon {
+  font-size: 18px; color: var(--gold); margin-bottom: 8px;
+}
+.s-contato .c-label {
+  font-size: 7pt; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 5px;
+}
+.s-contato .c-value {
+  font-size: 9pt; color: var(--cream);
+}
+.s-contato .tagline {
+  position: absolute; bottom: 28px; left: 0; right: 0;
+  font-family: var(--serif); font-size: 8pt; color: var(--dim);
+  letter-spacing: .08em;
+}
+
+/* Font Awesome fallback symbols */
+.ic::before { font-family: var(--sans); font-style: normal; }
+</style>
+
+<!-- Font Awesome via CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- ════════ SLIDE 1 — CAPA ════════ -->
+<div class="slide s-cover">
+  <div class="bg-deco"></div>
+  <div class="cover-line"></div>
+  <div class="cover-min">Ministério de Louvor</div>
+  <h1>Raízes</h1>
+  <div class="cover-tag">"Louvor congregacional escrito à luz da Palavra."</div>
+  <div class="cover-pill">
+    <span style="width:7px;height:7px;border-radius:50%;background:var(--gold);"></span>
+    Apresentação do Projeto · EP Tributo
+  </div>
+  <div class="cover-footer">@ministerioraizesoficial &nbsp;·&nbsp; minraizesoficial@gmail.com &nbsp;·&nbsp; (85) 98156-3690</div>
+</div>
+
+
+<!-- ════════ SLIDE 2 — QUEM SOMOS ════════ -->
+<div class="slide s-sobre">
+  <div class="inner">
+    <div class="col-text">
+      <span class="badge">Quem Somos</span>
+      <h2>Um ministério a serviço da <em style="color:var(--goldi)">Igreja</em></h2>
+      <div class="divider"></div>
+      <blockquote>"Louvor congregacional escrito à luz da Palavra."</blockquote>
+      <p>Somos um ministério dedicado a servir a Igreja por meio de canções pensadas para serem cantadas por toda a congregação — simples, fiéis às Escrituras e voltadas à adoração do Senhor. Cada composição nasce do desejo de edificar o Corpo de Cristo com letras que falam da fidelidade de Deus.</p>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-n">3</div>
+          <div class="stat-l">EPs Lançados</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">13+</div>
+          <div class="stat-l">Canções Autorais</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">14k+</div>
+          <div class="stat-l">Inscritos no YT</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-img">
+      <img src="../assets/images/fotos/ministry-cover.jpg" alt="Ministério Raízes">
+    </div>
+  </div>
+  <div class="footer-bar"><span>Ministério Raízes</span><span>@ministerioraizesoficial</span></div>
+</div>
+
+
+<!-- ════════ SLIDE 3 — LIDERANÇA ════════ -->
+<div class="slide s-lideres">
+  <div class="inner">
+    <div class="col-hd">
+      <span class="badge">Liderança</span>
+      <h2>Nossos<br>Líderes</h2>
+      <div class="divider"></div>
+      <p>Um casal a serviço da adoração — conduzindo o ministério com a Palavra no centro.</p>
+    </div>
+    <div class="leader-card">
+      <img class="leader-img" src="../assets/images/fotos/jesse.jpg" alt="Jessé Oliveira">
+      <div class="leader-name">Jessé Oliveira</div>
+      <div class="leader-role">Líder · Composição &amp; Voz</div>
+      <div class="leader-bio">Compositor e vocalista, dedica-se a escrever canções congregacionais fiéis às Escrituras, conduzindo o ministério na direção da adoração centrada em Cristo.</div>
+      <div class="leader-ig">@jesse_o_oliver</div>
+    </div>
+    <div class="leader-card">
+      <img class="leader-img" src="../assets/images/fotos/ismaylle.jpg" alt="Ismaylle Andrade">
+      <div class="leader-name">Ismaylle Andrade</div>
+      <div class="leader-role">Líder · Ministração &amp; Voz</div>
+      <div class="leader-bio">Ministra e vocalista, caminha lado a lado na liderança, cuidando da expressão da adoração e do encontro da Igreja com a Palavra em cada música.</div>
+      <div class="leader-ig">@ismayllyandrad</div>
+    </div>
+  </div>
+  <div class="footer-bar"><span>Ministério Raízes</span><span>@ministerioraizesoficial</span></div>
+</div>
+
+
+<!-- ════════ SLIDE 4 — EQUIPE ════════ -->
+<div class="slide s-equipe">
+  <span class="badge">Nossa Equipe</span>
+  <h2>Equipe de Ministração</h2>
+  <div class="divider"></div>
+  <p class="sub">Cinco músicos comprometidos com a adoração congregacional e a excelência na ministração.</p>
+  <div class="team-row">
+    <div class="member">
+      <img src="../assets/images/fotos/jesse.jpg" alt="Jessé">
+      <div class="member-name">Jessé Oliveira</div>
+      <div class="member-role">Vocalista &amp; Tecladista</div>
+    </div>
+    <div class="member">
+      <img src="../assets/images/fotos/ismaylle.jpg" alt="Ismaylle">
+      <div class="member-name">Ismaylle Andrade</div>
+      <div class="member-role">Vocalista</div>
+    </div>
+    <div class="member">
+      <img src="../assets/images/fotos/priscila.jpg" alt="Priscila">
+      <div class="member-name">Priscila Barros</div>
+      <div class="member-role">Vocalista</div>
+    </div>
+    <div class="member">
+      <img src="../assets/images/fotos/max.jpg" alt="Max">
+      <div class="member-name">Max Andrade</div>
+      <div class="member-role">Percussão &amp; Som</div>
+    </div>
+    <div class="member">
+      <img src="../assets/images/fotos/elayne.jpg" alt="Elayne">
+      <div class="member-name">Elayne Luz</div>
+      <div class="member-role">Vocalista Convidada</div>
+    </div>
+  </div>
+  <div class="footer-bar"><span>Ministério Raízes</span><span>@ministerioraizesoficial</span></div>
+</div>
+
+
+<!-- ════════ SLIDE 5 — DISCOGRAFIA ════════ -->
+<div class="slide s-disco">
+  <span class="badge">Discografia</span>
+  <h2>Projetos Autorais Lançados</h2>
+  <div class="divider"></div>
+  <div class="eps">
+    <div class="ep-card">
+      <img class="ep-img" src="../assets/images/capas/tudo-ele-fez.jpg" alt="EP 1">
+      <div class="ep-body">
+        <div class="ep-year">2024 · EP 1 de 3</div>
+        <div class="ep-name">Tudo Ele Fez Por Mim</div>
+        <ul class="ep-tracks">
+          <li>Glória e Majestade</li>
+          <li>Tudo Ele Fez Por Mim</li>
+          <li>Ele Vive</li>
+          <li>Jeremias 29</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ep-card">
+      <img class="ep-img" src="../assets/images/capas/ep2-cover.jpg" alt="EP 2">
+      <div class="ep-body">
+        <div class="ep-year">2025 · EP 2 de 3</div>
+        <div class="ep-name">Ele Continua a Me Amar</div>
+        <ul class="ep-tracks">
+          <li>Aos Teus Pés</li>
+          <li>Ele Continua a Me Amar</li>
+          <li>Tu És Deus</li>
+          <li>Vou Confiar</li>
+          <li>Ele É Jesus</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ep-card">
+      <img class="ep-img" src="../assets/images/capas/permanecer.jpg" alt="EP 3">
+      <div class="ep-body">
+        <div class="ep-year">2026 · EP 3 de 3</div>
+        <div class="ep-name">Permanecer</div>
+        <ul class="ep-tracks">
+          <li>O Véu (The Veil)</li>
+          <li>Permanecer</li>
+          <li>Foi Por Me Amar</li>
+          <li>Volta Pra Mim</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar"><span>Ministério Raízes</span><span>@ministerioraizesoficial</span></div>
+</div>
+
+
+<!-- ════════ SLIDE 6 — EP TRIBUTO ════════ -->
+<div class="slide s-tributo">
+  <div class="inner">
+    <div class="col-img">
+      <img src="../assets/images/capas/ep-tributo.png" alt="EP Tributo">
+    </div>
+    <div class="col-info">
+      <div class="em-breve">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);"></span>
+        Próximo Projeto
+      </div>
+      <span class="badge">EP Tributo</span>
+      <h2>Seis canções para a Igreja cantar</h2>
+      <div class="divider"></div>
+      <p class="desc">Um tributo de gratidão e celebração ao Senhor — composições autorais escritas para a Igreja cantar, exaltando a fidelidade de Deus e convidando a congregação a uma adoração viva e centrada em Cristo.</p>
+      <div class="tracks">
+        <div class="track"><span class="track-n">01</span> Tributo</div>
+        <div class="track"><span class="track-n">04</span> Vinde a Mim</div>
+        <div class="track"><span class="track-n">02</span> Filho de Deus</div>
+        <div class="track"><span class="track-n">05</span> Cantai</div>
+        <div class="track"><span class="track-n">03</span> Eu Clamo</div>
+        <div class="track"><span class="track-n">06</span> Eu Vou Subir</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar"><span>Ministério Raízes</span><span>@ministerioraizesoficial</span></div>
+</div>
+
+
+<!-- ════════ SLIDE 7 — PARCERIA ════════ -->
+<div class="slide s-parceria">
+  <div class="hd">
+    <span class="badge">Parceria</span>
+    <h2>Como sua Igreja pode fazer parte</h2>
+    <div class="divider"></div>
+    <p class="sub">Estamos em busca de igrejas parceiras para o lançamento do EP Tributo. Veja as formas de participar:</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="c-icon"><i class="fas fa-church"></i></div>
+      <div class="c-title">Ceda o Espaço</div>
+      <p class="c-text">Ofereça sua igreja como palco do lançamento — um culto especial ou uma noite de adoração.</p>
+    </div>
+    <div class="card">
+      <div class="c-icon"><i class="fas fa-seedling"></i></div>
+      <div class="c-title">Patrocine a Produção</div>
+      <p class="c-text">Apoie os custos de gravação, mixagem, masterização e divulgação do projeto.</p>
+    </div>
+    <div class="card">
+      <div class="c-icon"><i class="fas fa-envelope-open-text"></i></div>
+      <div class="c-title">Convide o Ministério</div>
+      <p class="c-text">Leve o Ministério Raízes ao seu evento, culto ou conferência. Cada apresentação edifica a Igreja.</p>
+    </div>
+    <div class="card">
+      <div class="c-icon"><i class="fas fa-hand-holding-heart"></i></div>
+      <div class="c-title">Semeie com Ofertas</div>
+      <p class="c-text">Ofertas pontuais ou recorrentes sustentam cada etapa — da composição ao lançamento.</p>
+    </div>
+  </div>
+  <div class="footer-bar"><span>Ministério Raízes</span><span>@ministerioraizesoficial</span></div>
+</div>
+
+
+<!-- ════════ SLIDE 8 — NOSSA IGREJA ════════ -->
+<div class="slide s-igreja">
+  <span class="badge">Nossa Casa</span>
+  <h2>Igreja Local &amp; Cobertura Pastoral</h2>
+  <div class="divider"></div>
+  <div class="inner">
+    <div class="pastores">
+      <div class="pastor-row">
+        <img class="pastor-avatar" src="../assets/images/fotos/dyego-renata.jpg" alt="Pr. Dyego e Pra. Renata">
+        <div>
+          <div class="pastor-name">Pr. Dyego &amp; Pra. Renata</div>
+          <div class="pastor-role">Pastores Presidentes</div>
+          <div class="pastor-ig">@prrubensdyego · @renatacoutinho02</div>
+        </div>
+      </div>
+      <div class="pastor-row">
+        <img class="pastor-avatar" src="../assets/images/fotos/pr-iran.jpg" alt="Pr. Iran">
+        <div>
+          <div class="pastor-name">Pr. Iran Coutinho</div>
+          <div class="pastor-role">Pastor Honorário</div>
+          <div class="pastor-ig">@irancoutinho21</div>
+        </div>
+      </div>
+      <div class="pastor-row">
+        <img class="pastor-avatar" src="../assets/images/fotos/ronaldo-lilia.jpg" alt="Pr. Ronaldo e Pra. Lilia">
+        <div>
+          <div class="pastor-name">Pr. Ronaldo &amp; Pra. Lilia</div>
+          <div class="pastor-role">Pastores da Família</div>
+          <div class="pastor-ig">@ronaldo.antunes.fiuza · @liliafiuzahair</div>
+        </div>
+      </div>
+    </div>
+    <div class="church-box">
+      <div class="church-name">Comunidade de Cristo Maranatha</div>
+      <div class="church-info">
+        <strong style="color:var(--cream)">Endereço</strong><br>
+        R. Armando Monteiro, 1626<br>
+        Vila União — Fortaleza, CE<br><br>
+        O Ministério Raízes está enraizado nessa comunidade local, servindo sob cobertura pastoral firme e comprometida com a Palavra.
+      </div>
+      <div class="church-ig"><i class="fab fa-instagram"></i> @cc.maranatha</div>
+    </div>
+  </div>
+  <div class="footer-bar"><span>Ministério Raízes</span><span>@ministerioraizesoficial</span></div>
+</div>
+
+
+<!-- ════════ SLIDE 9 — CONTATO ════════ -->
+<div class="slide s-contato">
+  <div class="bg-deco"></div>
+  <span class="badge" style="position:relative">Contato</span>
+  <h2 style="position:relative">Vamos <em class="gold">plantar</em> juntos.</h2>
+  <p class="sub">Toda canção que nasce aqui floresce no apoio da Igreja. Conte conosco — e conte com a gente.</p>
+  <div class="contacts">
+    <div class="contact-item">
+      <div class="c-icon"><i class="fas fa-envelope"></i></div>
+      <div class="c-label">E-mail</div>
+      <div class="c-value">minraizesoficial@gmail.com</div>
+    </div>
+    <div class="contact-item">
+      <div class="c-icon"><i class="fab fa-instagram"></i></div>
+      <div class="c-label">Instagram</div>
+      <div class="c-value">@ministerioraizesoficial</div>
+    </div>
+    <div class="contact-item">
+      <div class="c-icon"><i class="fab fa-whatsapp"></i></div>
+      <div class="c-label">WhatsApp</div>
+      <div class="c-value">(85) 98156-3690</div>
+    </div>
+    <div class="contact-item">
+      <div class="c-icon"><i class="fab fa-youtube"></i></div>
+      <div class="c-label">YouTube</div>
+      <div class="c-value">@ministerioraizesoficial</div>
+    </div>
+  </div>
+  <div class="tagline">Raízes — Ministério de Louvor Congregacional à luz da Palavra · 2026</div>
+</div>
+
+</body>
+</html>
